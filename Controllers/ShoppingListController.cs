@@ -28,7 +28,7 @@ namespace CuisAriaBE.Controllers
         [HttpGet("{id}", Name = "GetShoppingList")]
         public IActionResult GetById(int id)
         {
-            var shoppingList = _context.ShoppingLists.FirstOrDefault(s => s.ShoppingListId == id);
+            var shoppingList = _context.ShoppingLists.FirstOrDefault(s => s.UserId == id);
             if (shoppingList == null)
             {
                 return NotFound();
@@ -43,11 +43,11 @@ namespace CuisAriaBE.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (shoppingList.ShoppingListId == 0)
+                if (shoppingList.UserId == 0)
                 {
                     _context.ShoppingLists.Add(shoppingList);
                     _context.SaveChanges();
-                    return CreatedAtRoute("GetShoppingList", new { id = shoppingList.ShoppingListId }, shoppingList);
+                    return CreatedAtRoute("GetShoppingList", new { id = shoppingList.UserId }, shoppingList);
                 }
                 else
                 {
@@ -63,7 +63,7 @@ namespace CuisAriaBE.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var delShoppingList = _context.ShoppingLists.First(s => s.ShoppingListId == id);
+            var delShoppingList = _context.ShoppingLists.First(s => s.UserId == id);
             if (delShoppingList == null)
             {
                 return NotFound();
