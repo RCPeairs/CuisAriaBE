@@ -8,9 +8,10 @@ using CuisAriaBE.Models;
 namespace CuisAriaBE.Migrations
 {
     [DbContext(typeof(CuisAriaBEContext))]
-    partial class CuisAriaBEContextModelSnapshot : ModelSnapshot
+    [Migration("20170612235048_MenuRecipeJoin")]
+    partial class MenuRecipeJoin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -26,6 +27,20 @@ namespace CuisAriaBE.Migrations
                     b.HasKey("IngredientId");
 
                     b.ToTable("Ingredients");
+                });
+
+            modelBuilder.Entity("CuisAriaBE.Models.Item", b =>
+                {
+                    b.Property<int>("ItemId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ItemName");
+
+                    b.Property<int>("ItemQty");
+
+                    b.HasKey("ItemId");
+
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("CuisAriaBE.Models.Keyword", b =>
@@ -69,6 +84,18 @@ namespace CuisAriaBE.Migrations
                     b.HasIndex("RecipeId");
 
                     b.ToTable("MenuRecipe");
+                });
+
+            modelBuilder.Entity("CuisAriaBE.Models.Qty", b =>
+                {
+                    b.Property<int>("QtyId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("IngredQty");
+
+                    b.HasKey("QtyId");
+
+                    b.ToTable("Qtys");
                 });
 
             modelBuilder.Entity("CuisAriaBE.Models.Recipe", b =>
@@ -179,6 +206,18 @@ namespace CuisAriaBE.Migrations
                     b.HasIndex("IngredientId");
 
                     b.ToTable("StepIngredient");
+                });
+
+            modelBuilder.Entity("CuisAriaBE.Models.Unit", b =>
+                {
+                    b.Property<int>("UnitId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("UnitName");
+
+                    b.HasKey("UnitId");
+
+                    b.ToTable("Units");
                 });
 
             modelBuilder.Entity("CuisAriaBE.Models.User", b =>

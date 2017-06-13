@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace CuisAriaBE.Models
 {
-    public class Menu
+    public class UserRecipeFavorite
     {
-        public int MenuId { get; set; }
         public int UserId { get; set; }
-        public String Name { get; set; }
+        public int RecipeId { get; set; }
+        public bool Favorite { get; set; }
 
         public User User { get; set; }
-        public ICollection<MenuRecipe> MenuRecipes { get; set; }
+        public Recipe Recipe { get; set; }
     }
 }
