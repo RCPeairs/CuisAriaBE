@@ -28,7 +28,7 @@ namespace CuisAriaBE.Controllers
         [HttpGet("{id}", Name = "GetUser")]
         public IActionResult GetById(int id)
         {
-            var user = _context.Users.FirstOrDefault(u => u.UserId == id);
+            var user = _context.Users.FirstOrDefault(u => u.Id == id);
             if (user == null)
             {
                 return NotFound();
@@ -43,11 +43,11 @@ namespace CuisAriaBE.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (user.UserId == 0)
+                if (user.Id == 0)
                 {
                     _context.Users.Add(user);
                     _context.SaveChanges();
-                    return CreatedAtRoute("GetUser", new { id = user.UserId }, user);
+                    return CreatedAtRoute("GetUser", new { id = user.Id }, user);
                 } else
                 {
                     _context.Users.Update(user);
@@ -62,7 +62,7 @@ namespace CuisAriaBE.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var delUser = _context.Users.First(u => u.UserId == id);
+            var delUser = _context.Users.First(u => u.Id == id);
             if (delUser == null)
             {
                 return NotFound();

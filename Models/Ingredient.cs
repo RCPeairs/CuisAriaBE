@@ -7,8 +7,9 @@ namespace CuisAriaBE.Models
 {
     public class Ingredient
     {
-        public int IngredientId { get; set; }
+        public int Id { get; set; }
         public string IngredName { get; set; }
 
+       // public ICollection<StepIngredient> StepIngredients { get; set; }
     }
 }

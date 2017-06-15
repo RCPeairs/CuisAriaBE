@@ -8,8 +8,8 @@ using CuisAriaBE.Models;
 namespace CuisAriaBE.Migrations
 {
     [DbContext(typeof(CuisAriaBEContext))]
-    [Migration("20170612214858_RecipeStepjoin")]
-    partial class RecipeStepjoin
+    [Migration("20170613202825_CleanMigration2")]
+    partial class CleanMigration2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,69 +19,82 @@ namespace CuisAriaBE.Migrations
 
             modelBuilder.Entity("CuisAriaBE.Models.Ingredient", b =>
                 {
-                    b.Property<int>("IngredientId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("IngredName");
 
-                    b.HasKey("IngredientId");
+                    b.HasKey("Id");
 
                     b.ToTable("Ingredients");
                 });
 
             modelBuilder.Entity("CuisAriaBE.Models.Item", b =>
                 {
-                    b.Property<int>("ItemId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("ItemName");
 
                     b.Property<int>("ItemQty");
 
-                    b.HasKey("ItemId");
+                    b.Property<string>("ItemUnit");
 
-                    b.ToTable("Items");
+                    b.Property<int?>("ShoppingListId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShoppingListId");
+
+                    b.ToTable("Item");
                 });
 
             modelBuilder.Entity("CuisAriaBE.Models.Keyword", b =>
                 {
-                    b.Property<int>("KeywordId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("SearchWord");
 
-                    b.HasKey("KeywordId");
+                    b.HasKey("Id");
 
                     b.ToTable("Keywords");
                 });
 
             modelBuilder.Entity("CuisAriaBE.Models.Menu", b =>
                 {
-                    b.Property<int>("MenuId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
 
-                    b.HasKey("MenuId");
+                    b.Property<int?>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Menus");
                 });
 
-            modelBuilder.Entity("CuisAriaBE.Models.Qty", b =>
+            modelBuilder.Entity("CuisAriaBE.Models.MenuRecipe", b =>
                 {
-                    b.Property<int>("QtyId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("MenuId");
 
-                    b.Property<int>("IngredQty");
+                    b.Property<int>("RecipeId");
 
-                    b.HasKey("QtyId");
+                    b.Property<int>("Servings");
 
-                    b.ToTable("Qtys");
+                    b.HasKey("MenuId", "RecipeId");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("MenuRecipe");
                 });
 
             modelBuilder.Entity("CuisAriaBE.Models.Recipe", b =>
                 {
-                    b.Property<int>("RecipeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
@@ -102,29 +115,40 @@ namespace CuisAriaBE.Migrations
 
                     b.Property<bool>("Shared");
 
-                    b.HasKey("RecipeId");
+                    b.HasKey("Id");
 
                     b.ToTable("Recipes");
                 });
 
+            modelBuilder.Entity("CuisAriaBE.Models.RecipeKeyword", b =>
+                {
+                    b.Property<int>("RecipeId");
+
+                    b.Property<int>("KeyWordId");
+
+                    b.Property<int?>("RecipeId1");
+
+                    b.HasKey("RecipeId", "KeyWordId");
+
+                    b.HasIndex("KeyWordId");
+
+                    b.HasIndex("RecipeId1");
+
+                    b.ToTable("RecipeKeyword");
+                });
+
             modelBuilder.Entity("CuisAriaBE.Models.ShoppingList", b =>
                 {
-                    b.Property<int>("ItemId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ItemName");
-
-                    b.Property<int>("ItemQty");
-
-                    b.Property<string>("ItemUnit");
 
                     b.Property<string>("ListName");
 
-                    b.Property<int>("UserId");
+                    b.Property<int?>("UserId");
 
                     b.Property<int?>("UserId1");
 
-                    b.HasKey("ItemId");
+                    b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
@@ -135,37 +159,46 @@ namespace CuisAriaBE.Migrations
 
             modelBuilder.Entity("CuisAriaBE.Models.Step", b =>
                 {
-                    b.Property<int>("StepId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Instruction");
 
-                    b.Property<int>("RecipeId");
+                    b.Property<int?>("RecipeId");
+
+                    b.Property<int?>("RecipeId1");
 
                     b.Property<int>("StepNumber");
 
-                    b.HasKey("StepId");
+                    b.HasKey("Id");
 
                     b.HasIndex("RecipeId");
+
+                    b.HasIndex("RecipeId1");
 
                     b.ToTable("Steps");
                 });
 
-            modelBuilder.Entity("CuisAriaBE.Models.Unit", b =>
+            modelBuilder.Entity("CuisAriaBE.Models.StepIngredient", b =>
                 {
-                    b.Property<int>("UnitId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("StepId");
 
-                    b.Property<string>("UnitName");
+                    b.Property<int>("IngredientId");
 
-                    b.HasKey("UnitId");
+                    b.Property<int>("IngredQty");
 
-                    b.ToTable("Units");
+                    b.Property<string>("IngredUnit");
+
+                    b.HasKey("StepId", "IngredientId");
+
+                    b.HasIndex("IngredientId");
+
+                    b.ToTable("StepIngredient");
                 });
 
             modelBuilder.Entity("CuisAriaBE.Models.User", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Avatar");
@@ -176,7 +209,7 @@ namespace CuisAriaBE.Migrations
 
                     b.Property<string>("UserName");
 
-                    b.HasKey("UserId");
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });
@@ -204,6 +237,48 @@ namespace CuisAriaBE.Migrations
                     b.ToTable("UserRecipeFavorite");
                 });
 
+            modelBuilder.Entity("CuisAriaBE.Models.Item", b =>
+                {
+                    b.HasOne("CuisAriaBE.Models.ShoppingList")
+                        .WithMany("Items")
+                        .HasForeignKey("ShoppingListId");
+                });
+
+            modelBuilder.Entity("CuisAriaBE.Models.Menu", b =>
+                {
+                    b.HasOne("CuisAriaBE.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("CuisAriaBE.Models.MenuRecipe", b =>
+                {
+                    b.HasOne("CuisAriaBE.Models.Menu", "Menu")
+                        .WithMany("MenuRecipes")
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CuisAriaBE.Models.Recipe", "Recipe")
+                        .WithMany()
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CuisAriaBE.Models.RecipeKeyword", b =>
+                {
+                    b.HasOne("CuisAriaBE.Models.Keyword", "KeyWord")
+                        .WithMany()
+                        .HasForeignKey("KeyWordId");
+
+                    b.HasOne("CuisAriaBE.Models.Recipe", "Recipe")
+                        .WithMany()
+                        .HasForeignKey("RecipeId");
+
+                    b.HasOne("CuisAriaBE.Models.Recipe")
+                        .WithMany("RecipeKeyWords")
+                        .HasForeignKey("RecipeId1");
+                });
+
             modelBuilder.Entity("CuisAriaBE.Models.ShoppingList", b =>
                 {
                     b.HasOne("CuisAriaBE.Models.User", "User")
@@ -218,8 +293,24 @@ namespace CuisAriaBE.Migrations
             modelBuilder.Entity("CuisAriaBE.Models.Step", b =>
                 {
                     b.HasOne("CuisAriaBE.Models.Recipe", "Recipe")
+                        .WithMany()
+                        .HasForeignKey("RecipeId");
+
+                    b.HasOne("CuisAriaBE.Models.Recipe")
                         .WithMany("Steps")
-                        .HasForeignKey("RecipeId")
+                        .HasForeignKey("RecipeId1");
+                });
+
+            modelBuilder.Entity("CuisAriaBE.Models.StepIngredient", b =>
+                {
+                    b.HasOne("CuisAriaBE.Models.Ingredient", "Ingredient")
+                        .WithMany()
+                        .HasForeignKey("IngredientId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CuisAriaBE.Models.Step", "Step")
+                        .WithMany("StepIngredients")
+                        .HasForeignKey("StepId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -230,7 +321,7 @@ namespace CuisAriaBE.Migrations
                         .HasForeignKey("RecipeId");
 
                     b.HasOne("CuisAriaBE.Models.Recipe")
-                        .WithMany("AppUsers")
+                        .WithMany("UserRecipeFavorites")
                         .HasForeignKey("RecipeId1");
 
                     b.HasOne("CuisAriaBE.Models.User", "User")
@@ -238,7 +329,7 @@ namespace CuisAriaBE.Migrations
                         .HasForeignKey("UserId");
 
                     b.HasOne("CuisAriaBE.Models.User")
-                        .WithMany("RecipeFavorites")
+                        .WithMany("UserRecipeFavorites")
                         .HasForeignKey("UserId1");
                 });
         }

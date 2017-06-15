@@ -7,7 +7,9 @@ namespace CuisAriaBE.Models
 {
     public class Keyword
     {
-        public int KeywordId { get; set; }
+        public int Id { get; set; }
         public string SearchWord { get; set; }
+
+        //public ICollection<RecipeKeyword> RecipeKeyWords { get; set; }
     }
 }

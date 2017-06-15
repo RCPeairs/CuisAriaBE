@@ -7,8 +7,7 @@ namespace CuisAriaBE.Models
 {
     public class Menu
     {
-        public int MenuId { get; set; }
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public String Name { get; set; }
 
         public User User { get; set; }

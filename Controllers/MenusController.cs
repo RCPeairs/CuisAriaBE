@@ -28,7 +28,7 @@ namespace CuisAriaBE.Controllers
         [HttpGet("{id}", Name = "GetMenu")]
         public IActionResult GetById(int id)
         {
-            var menu = _context.Menus.FirstOrDefault(m => m.MenuId == id);
+            var menu = _context.Menus.FirstOrDefault(m => m.Id == id);
             if (menu == null)
             {
                 return NotFound();
@@ -43,11 +43,11 @@ namespace CuisAriaBE.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (menu.MenuId == 0)
+                if (menu.Id == 0)
                 {
                     _context.Menus.Add(menu);
                     _context.SaveChanges();
-                    return CreatedAtRoute("GetMenu", new { id = menu.MenuId }, menu);
+                    return CreatedAtRoute("GetMenu", new { id = menu.Id }, menu);
                 }
                 else
                 {
@@ -63,7 +63,7 @@ namespace CuisAriaBE.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var delMenu = _context.Menus.First(m => m.MenuId == id);
+            var delMenu = _context.Menus.First(m => m.Id == id);
             if (delMenu == null)
             {
                 return NotFound();
