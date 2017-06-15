@@ -28,7 +28,7 @@ namespace CuisAriaBE.Controllers
         [HttpGet("{id}", Name = "GetKeyword")]
         public IActionResult GetById(int id)
         {
-            var keyword = _context.Keywords.FirstOrDefault(k => k.KeywordId == id);
+            var keyword = _context.Keywords.FirstOrDefault(k => k.Id == id);
             if (keyword == null)
             {
                 return NotFound();
@@ -43,11 +43,11 @@ namespace CuisAriaBE.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (keyword.KeywordId == 0)
+                if (keyword.Id == 0)
                 {
                     _context.Keywords.Add(keyword);
                     _context.SaveChanges();
-                    return CreatedAtRoute("Getkeyword", new { id = keyword.KeywordId }, keyword);
+                    return CreatedAtRoute("Getkeyword", new { id = keyword.Id }, keyword);
                 }
                 else
                 {
@@ -63,7 +63,7 @@ namespace CuisAriaBE.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var delKeyword = _context.Keywords.First(k => k.KeywordId == id);
+            var delKeyword = _context.Keywords.First(k => k.Id == id);
             if (delKeyword == null)
             {
                 return NotFound();

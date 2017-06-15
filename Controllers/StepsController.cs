@@ -28,7 +28,7 @@ namespace CuisAriaBE.Controllers
         [HttpGet("{id}", Name = "GetStep")]
         public IActionResult GetById(int id)
         {
-            var step = _context.Steps.FirstOrDefault(s => s.StepId == id);
+            var step = _context.Steps.FirstOrDefault(s => s.Id == id);
             if (step == null)
             {
                 return NotFound();
@@ -43,11 +43,11 @@ namespace CuisAriaBE.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (step.StepId == 0)
+                if (step.Id == 0)
                 {
                     _context.Steps.Add(step);
                     _context.SaveChanges();
-                    return CreatedAtRoute("Getstep", new { id = step.StepId }, step);
+                    return CreatedAtRoute("Getstep", new { id = step.Id }, step);
                 }
                 else
                 {
@@ -63,7 +63,7 @@ namespace CuisAriaBE.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var delStep = _context.Steps.First(s => s.StepId == id);
+            var delStep = _context.Steps.First(s => s.Id == id);
             if (delStep == null)
             {
                 return NotFound();

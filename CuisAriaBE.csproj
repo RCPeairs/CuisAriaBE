@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <PackageTargetFallback>portable-net45+win8</PackageTargetFallback>
+    <ApplicationInsightsResourceId>/subscriptions/ec772e2d-c9d8-4a19-80a5-bc9b2250e26b/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/CuisAriaBE</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/ec772e2d-c9d8-4a19-80a5-bc9b2250e26b/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/CuisAriaBE</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,8 +32,10 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DataSeed\" />
     <Folder Include="wwwroot\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
 </Project>

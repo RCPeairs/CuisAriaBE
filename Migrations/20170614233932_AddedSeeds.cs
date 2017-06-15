@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CuisAriaBE.Migrations
 {
-    public partial class UserRecipeFavoriteJoin20 : Migration
+    public partial class AddedSeeds : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

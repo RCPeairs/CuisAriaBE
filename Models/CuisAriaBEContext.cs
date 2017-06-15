@@ -11,6 +11,7 @@ namespace CuisAriaBE.Models
     {
         public CuisAriaBEContext(DbContextOptions<CuisAriaBEContext> options) : base(options)
         {
+            //DbInitializer.Initialize(CuisAriaBEContext);
         }
 
         public DbSet<User> Users { get; set; }
@@ -39,7 +40,7 @@ namespace CuisAriaBE.Models
             modelBuilder.Entity<StepIngredient>().ToTable("StepIngredient");
             modelBuilder.Entity<UserRecipeFavorite>().ToTable("UserRecipeFavorite");
 
-            //Establish dual keys for join tables
+            //Establish composite keys for join tables
             modelBuilder.Entity<UserRecipeFavorite>()
                 .HasKey(u => new { u.UserId, u.RecipeId });
 

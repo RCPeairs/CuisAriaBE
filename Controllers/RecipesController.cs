@@ -28,7 +28,7 @@ namespace CuisAriaBE.Controllers
         [HttpGet("{id}", Name = "GetRecipe")]
         public IActionResult GetById(int id)
         {
-            var recipe = _context.Recipes.FirstOrDefault(r => r.RecipeId == id);
+            var recipe = _context.Recipes.FirstOrDefault(r => r.Id == id);
             if (recipe == null)
             {
                 return NotFound();
@@ -43,11 +43,11 @@ namespace CuisAriaBE.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (recipe.RecipeId == 0)
+                if (recipe.Id == 0)
                 {
                     _context.Recipes.Add(recipe);
                     _context.SaveChanges();
-                    return CreatedAtRoute("GetRecipe", new { id = recipe.RecipeId }, recipe);
+                    return CreatedAtRoute("GetRecipe", new { id = recipe.Id }, recipe);
                 }
                 else
                 {
@@ -63,7 +63,7 @@ namespace CuisAriaBE.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var delRecipe = _context.Recipes.First(r => r.RecipeId == id);
+            var delRecipe = _context.Recipes.First(r => r.Id == id);
             if (delRecipe == null)
             {
                 return NotFound();
