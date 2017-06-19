@@ -10,8 +10,9 @@ namespace CuisAriaBE.Models
     {
         public int Id { get; set; }
         public string ItemName { get; set; }
-        public int ItemQty { get; set; }
+        public decimal ItemQty { get; set; }
         public string ItemUnit { get; set; }
 
+        public ShoppingList ShoppingLists { get; set; }
     }
 }

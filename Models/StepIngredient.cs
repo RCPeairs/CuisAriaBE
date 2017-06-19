@@ -9,7 +9,7 @@ namespace CuisAriaBE.Models
     {
         public int StepId { get; set; }
         public int IngredientId { get; set; }
-        public int IngredQty { get; set; }
+        public decimal IngredQty { get; set; }
         public string IngredUnit { get; set; }
 
         public Step Step { get; set; }

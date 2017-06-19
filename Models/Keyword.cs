@@ -7,9 +7,14 @@ namespace CuisAriaBE.Models
 {
     public class Keyword
     {
+        public Keyword()
+        {
+            RecipeKeywords = new List<RecipeKeyword>();
+        }
+
         public int Id { get; set; }
         public string SearchWord { get; set; }
 
-        //public ICollection<RecipeKeyword> RecipeKeyWords { get; set; }
+        public ICollection<RecipeKeyword> RecipeKeywords { get; set; }
     }
 }

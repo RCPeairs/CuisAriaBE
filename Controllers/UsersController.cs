@@ -37,6 +37,19 @@ namespace CuisAriaBE.Controllers
             return new ObjectResult(user);
         }
 
+        // GET api/Users/UserName
+        [HttpGet("{name}", Name = "GetUserByName")]
+        public IActionResult GetByValue(string name)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.UserName == name);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return new ObjectResult(user);
+        }
+
         // POST api/Users
         [HttpPost]
         public IActionResult Create([FromBody] User user)

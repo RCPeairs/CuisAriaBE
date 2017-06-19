@@ -11,7 +11,6 @@ namespace CuisAriaBE.Models
     {
         public CuisAriaBEContext(DbContextOptions<CuisAriaBEContext> options) : base(options)
         {
-            //DbInitializer.Initialize(CuisAriaBEContext);
         }
 
         public DbSet<User> Users { get; set; }
@@ -19,6 +18,7 @@ namespace CuisAriaBE.Models
         public DbSet<Step> Steps { get; set; }
         public DbSet<Keyword> Keywords { get; set; }
         public DbSet<Menu> Menus { get; set; }
+        public DbSet<Item> Items { get; set; }
         public DbSet<ShoppingList> ShoppingLists { get; set; }
         public DbSet<MenuRecipe> MenuRecipe { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
@@ -33,6 +33,7 @@ namespace CuisAriaBE.Models
             modelBuilder.Entity<Step>().ToTable("Steps");
             modelBuilder.Entity<Keyword>().ToTable("Keywords");
             modelBuilder.Entity<Menu>().ToTable("Menus");
+            modelBuilder.Entity<Item>().ToTable("Items");
             modelBuilder.Entity<ShoppingList>().ToTable("ShoppingLists");
             modelBuilder.Entity<MenuRecipe>().ToTable("MenuRecipe");
             modelBuilder.Entity<Ingredient>().ToTable("Ingredients");
@@ -48,46 +49,52 @@ namespace CuisAriaBE.Models
                 .HasKey(u => new { u.StepId, u.IngredientId });
 
             modelBuilder.Entity<RecipeKeyword>()
-                .HasKey(u => new { u.RecipeId, u.KeyWordId });
+                .HasKey(u => new { u.RecipeId, u.KeywordId });
 
             modelBuilder.Entity<MenuRecipe>()
                 .HasKey(u => new { u.MenuId, u.RecipeId });
 
             //Do not allow cascade deletes to insure there are no circular delete paths. May enable some cascade deletes on future review.
-            modelBuilder.Entity<Menu>()
-                .HasOne(m => m.User)
-                .WithMany()
-                .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<ShoppingList>()
-                .HasOne(s => s.User)
-                .WithMany()
-                .OnDelete(DeleteBehavior.Restrict);
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
 
-            modelBuilder.Entity<UserRecipeFavorite>()
-                  .HasOne(u => u.User)
-                  .WithMany()
-                  .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<Menu>()
+            //    .HasOne(m => m.User)
+            //    .WithMany()
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<UserRecipeFavorite>()
-                  .HasOne(u => u.Recipe)
-                  .WithMany()
-                  .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<ShoppingList>()
+            //    .HasOne(s => s.User)
+            //    .WithMany()
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Step>()
-                .HasOne(s => s.Recipe)
-                .WithMany()
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<UserRecipeFavorite>()
+            //      .HasOne(u => u.User)
+            //      .WithMany()
+            //      .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<RecipeKeyword>()
-                .HasOne(s => s.Recipe)
-                .WithMany()
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<UserRecipeFavorite>()
+            //      .HasOne(u => u.Recipe)
+            //      .WithMany()
+            //      .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<RecipeKeyword>()
-               .HasOne(s => s.KeyWord)
-               .WithMany()
-               .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<Step>()
+            //    .HasOne(s => s.Recipe)
+            //    .WithMany()
+            //    .OnDelete(DeleteBehavior.Restrict);
+
+            //modelBuilder.Entity<RecipeKeyword>()
+            //    .HasOne(s => s.Recipe)
+            //    .WithMany()
+            //    .OnDelete(DeleteBehavior.Restrict);
+
+            //modelBuilder.Entity<RecipeKeyword>()
+            //   .HasOne(s => s.KeyWord)
+            //   .WithMany()
+            //   .OnDelete(DeleteBehavior.Restrict);
         }
 
     }

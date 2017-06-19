@@ -7,6 +7,11 @@ namespace CuisAriaBE.Models
 {
     public class User
     {
+        public User()
+        {
+            UserRecipeFavorites = new List<UserRecipeFavorite>();
+            ShoppingLists = new List<ShoppingList>();
+        }
 
         public int Id { get; set; }
         public string UserName { get; set; }

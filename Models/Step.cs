@@ -7,6 +7,11 @@ namespace CuisAriaBE.Models
 {
     public class Step
     {
+        public Step()
+        {
+            StepIngredients = new List<StepIngredient>();
+        }
+
         public int Id { get; set; }
         public int StepNumber { get; set; }
         public string Instruction { get; set; }
