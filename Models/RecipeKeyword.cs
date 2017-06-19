@@ -8,9 +8,9 @@ namespace CuisAriaBE.Models
     public class RecipeKeyword
     {
         public int RecipeId { get; set; }
-        public int KeyWordId { get; set; }
+        public int KeywordId { get; set; }
 
         public Recipe Recipe { get; set; }
-        public Keyword KeyWord { get; set; }
+        public Keyword Keyword { get; set; }
     }
 }
