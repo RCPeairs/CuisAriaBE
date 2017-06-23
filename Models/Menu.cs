@@ -12,6 +12,7 @@ namespace CuisAriaBE.Models
             MenuRecipes = new List<MenuRecipe>();
         }
         public int Id { get; set; }
+        public int UserId { get; set; }
         public String MenuName { get; set; }
 
         public User User { get; set; }

@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CuisAriaBE.Models;
 
 namespace CuisAriaBE.ViewModels
 {
     public class UserRecipeVM
     {
-        public string UserName { get; set; }
+        //public User User { get; set; }
+        //public ICollection<Recipe> Recipes { get; set; }
+        //public UserRecipeFavorite UserRecipeFavorite { get; set; }
+
+        //public string UserName { get; set; }
         public int UserId { get; set; }
+
+        public bool Favorite { get; set; }
 
         public int RecipeId { get; set; }
         public string RecipeName { get; set; }
@@ -22,6 +29,7 @@ namespace CuisAriaBE.ViewModels
         public string RecipePic { get; set; }
         public int PrepTime { get; set; }
         public int CookTime { get; set; }
-        public int Servings { get; set; }
+        public int RecipeServings { get; set; }
+        public string ServingSize { get; set; }
     }
 }

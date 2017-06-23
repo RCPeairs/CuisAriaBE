@@ -7,7 +7,6 @@ using CuisAriaBE.Models;
 
 namespace CuisAriaBE.Controllers
 {
-    [Route("api/[controller]")]
     public class UsersController : Controller
     {
         private readonly CuisAriaBEContext _context;
@@ -17,31 +16,11 @@ namespace CuisAriaBE.Controllers
             _context = context;
         }
 
-        // GET: api/Users
-        [HttpGet]
-        public IEnumerable<User> GetAllUsers()
-        {
-            return _context.Users.ToList();
-        }
-
-        // GET api/Users/5
-        [HttpGet("{id}", Name = "GetUser")]
-        public IActionResult GetById(int id)
-        {
-            var user = _context.Users.FirstOrDefault(u => u.Id == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return new ObjectResult(user);
-        }
-
-        // GET api/Users/UserName
-        [HttpGet("{name}", Name = "GetUserByName")]
+        // GET GetUserByName/UserName
+        [HttpGet, Route("GetUserByName/{name}")]
         public IActionResult GetByValue(string name)
         {
-            var user = _context.Users.FirstOrDefault(u => u.UserName == name);
+            var user = _context.Users.FirstOrDefault(u => u.UserName.ToLower() == name.ToLower());
             if (user == null)
             {
                 return NotFound();
@@ -50,26 +29,61 @@ namespace CuisAriaBE.Controllers
             return new ObjectResult(user);
         }
 
-        // POST api/Users
-        [HttpPost]
+        // POST AddEditUser/UserId
+        [HttpPost, Route("AddEditUser")]
         public IActionResult Create([FromBody] User user)
         {
             if (ModelState.IsValid)
             {
+                // Add check here to insure UserName is unique
+
+
                 if (user.Id == 0)
                 {
                     _context.Users.Add(user);
                     _context.SaveChanges();
-                    return CreatedAtRoute("GetUser", new { id = user.Id }, user);
-                } else
+                    return CreatedAtRoute("", new { id = user.Id }, user);   
+                }
+                else
                 {
                     _context.Users.Update(user);
                     _context.SaveChanges();
-                    return new NoContentResult(); 
+                    return new NoContentResult();
                 }
             }
             return BadRequest();
         }
+
+
+
+
+
+
+
+
+        // GET: api/Users
+        //[HttpGet]
+        //public IEnumerable<User> GetAllUsers()
+        //{
+        //    return _context.Users.ToList();
+        //}
+
+        //// GET api/Users/5
+        //[HttpGet("{id}", Name = "GetUser")]
+        //public IActionResult GetById(int id)
+        //{
+        //    var user = _context.Users.FirstOrDefault(u => u.Id == id);
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return new ObjectResult(user);
+        //}
+
+
+
+
 
         // DELETE api/values/5
         [HttpDelete("{id}")]

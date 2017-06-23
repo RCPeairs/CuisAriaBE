@@ -40,7 +40,7 @@ namespace CuisAriaBE.Models
                     Description = "A surprisingly good low-carb cookie",
                     OwnerId = users.Single(u => u.UserName == "Picabo Street").Id, Shared = false,
                     RecipeServings = 8,
-                    ServingSize = "3 cookies",
+                    ServingSize = "1/8 cookie",
                     MyRating = 4,
                     ShareRating = 0,
                     NumShareRatings = 0,
@@ -269,117 +269,136 @@ namespace CuisAriaBE.Models
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Low-carb Chocolate Chip Cookies"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Low-carb Chocolate Chip Cookies").Id,
                     StepNumber = 1,
                     Instruction = "Preheat oven to 350 degrees F."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Low-carb Chocolate Chip Cookies"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Low-carb Chocolate Chip Cookies").Id,
                     StepNumber = 2,
                     Instruction = "Heat butter in a sauce pan on medium heat until butter begins to brown. Stir occasionally. Remove from heat and allow to cool about 5 minutes."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Low-carb Chocolate Chip Cookies"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Low-carb Chocolate Chip Cookies").Id,
                     StepNumber = 3,
                     Instruction = "While butter is cooling, whisk together the egg and vanilla extract. Add the sugar and sweetener and whisk again until combined. Add the butter once it has cooled and mix well."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Low-carb Chocolate Chip Cookies"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Low-carb Chocolate Chip Cookies").Id,
                     StepNumber = 4,
                     Instruction = "Sift in the almond flour. Add the salt and half the chocolate chips. Mix gently until the batter is well combined and creamy. Spoon batter into 9 inch pice pan and top with remaining chocolate chips"
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Low-carb Chocolate Chip Cookies"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Low-carb Chocolate Chip Cookies").Id,
                     StepNumber = 5,
                     Instruction = "Bake for 25 to 30 minutes or until set and a toothpick inserted into the center of the cookie comes out clean."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Southwest Scrambled Eggs"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Southwest Scrambled Eggs").Id,
                     StepNumber = 1,
                     Instruction = "Add oil to frying pan and saute peppers and chicken over medium heat until peppers start to soften. Approximately 5 minutes."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Southwest Scrambled Eggs"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Southwest Scrambled Eggs").Id,
                     StepNumber = 2,
                     Instruction = "Whisk eggs with cayenne pepper, chives, salt and black pepper until frothy."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Southwest Scrambled Eggs"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Southwest Scrambled Eggs").Id,
                     StepNumber = 3,
                     Instruction = "Add egg mixture to sauted peppers and chicken. Stir occasionally to scramble."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Southwest Scrambled Eggs"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Southwest Scrambled Eggs").Id,
                     StepNumber = 4,
                     Instruction = "When eggs are cooked to desired firmness top with shredded cheese, diced avocado and chipotle pepper sauce."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Brownies"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Brownies").Id,
                     StepNumber = 1,
                     Instruction = "Preheat oven to 300 degrees F. Line a 9x13 inch pan with greased parchement paper"
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Brownies"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Brownies").Id,
                     StepNumber = 2,
                     Instruction = "Combine cocoa, melted butter, sugar, eggs, salt, flour and vanilla. Mix until well combined. It should be very thick and sticky."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Brownies"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Brownies").Id,
                     StepNumber = 3,
                     Instruction = "Spread mixture into the prepared pan. Bake at 300 degrees F for 30 minutes. Cool completely before cutting into squares."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Fried Chicken"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Fried Chicken").Id,
                     StepNumber = 1,
                     Instruction = "Preheat oven to 425 degrees F. Place a rack in a roasting pan or on a baking sheet."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Fried Chicken"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Fried Chicken").Id,
                     StepNumber = 2,
                     Instruction = "Rinse chicken in cold water and pat dry. In a wide bowl mix flour with salt and black pepper. Dredge each chicken piece through the flour so it's fully coated, tapping against the edge of the bowl to shake off excess flour. Discard leftover flour."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Fried Chicken"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Fried Chicken").Id,
                     StepNumber = 3,
                     Instruction = "Place cornflakes in a plastic bag and squeeze out as much air from the bag as possible. Seal the bag. Crush the cornflakes by rolling over the bag with a rolling pin. Pour the crushed cornflakes into a wide bowl."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Fried Chicken"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Fried Chicken").Id,
                     StepNumber = 4,
                     Instruction = "In a bowl big enough to dredge chicken pieces, mix the buttermilk, mustard, cayenne pepper, paprika and sage. Give each floured chicken piece a good buttermilk bath and then roll in the cornflake crumbs."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Fried Chicken"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Fried Chicken").Id,
                     StepNumber = 5,
                     Instruction = "Arrange the chicken pieces on the rack and place in the hot oven. Bake for 15 to 20 minutes, then lower the heat to 375 degrees F and bake for another 25 to 30 minutes, until cooked through and crispy. The juices should run clear when the meat is pierced with a knife."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Greek Salad"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Greek Salad").Id,
                     StepNumber = 1,
                     Instruction = "In a large bowl, combine the Romaine, onion, olives, bell peppers, tomatoes, cucumber and cheese."
                 },
                 new Step
                 {
                     Recipe = recipes.Single(r => r.RecipeName == "Greek Salad"),
+                    RecipeId = recipes.Single(r => r.RecipeName == "Greek Salad").Id,
                     StepNumber = 2,
-                    Instruction = "Whisk together the olive oil, oregano, lemon juice and black pepper. Pour dressing over salad, toss and serve." +
-                    ""}
+                    Instruction = "Whisk together the olive oil, oregano, lemon juice and black pepper. Pour dressing over salad, toss and serve." 
+                }
             };
             foreach (Step s in steps)
             {
@@ -440,11 +459,13 @@ namespace CuisAriaBE.Models
                 {
                     ListName = "Dinner",
                     User = users.Single(u => u.UserName == "Picabo Street"),
+                    UserId = users.Single(u => u.UserName == "Picabo Street").Id
                 },
                new ShoppingList
                 {
                     ListName = "Breakfast",
                     User = users.Single(u => u.UserName == "Lindsey Vonn"),
+                    UserId = users.Single(u => u.UserName == "Lindsey Vonn").Id
                 }
             };
             foreach (ShoppingList s in shoppingLists)
@@ -460,224 +481,256 @@ namespace CuisAriaBE.Models
                     ItemName = "chicken pieces",
                     ItemQty = 8,
                     ItemUnit = "",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "all-purpose flour",
                     ItemQty = 0.5m,
                     ItemUnit = "cup",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "salt",
                     ItemQty = 0.25m,
                     ItemUnit = "tsp",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "ground black pepper",
                     ItemQty = 0.25m,
                     ItemUnit = "tsp",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "cornflakes",
                     ItemQty = 4,
                     ItemUnit = "cups",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "buttermilk",
                     ItemQty = 0.66m,
                     ItemUnit = "cup",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "mustard",
                     ItemQty = 2,
                     ItemUnit = "Tbsp",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "cayenne pepper",
                     ItemQty = 0.25m,
                     ItemUnit = "tsp",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "paprika",
                     ItemQty = 1.5m,
                     ItemUnit = "tsp",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "ground sage",
                     ItemQty = 0.75m,
                     ItemUnit = "tsp",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "romaine lettuce",
                     ItemQty = 0.5m,
                     ItemUnit = "head",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "red onion thinly sliced",
                     ItemQty = 0.5m,
                     ItemUnit = "",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "pitted black olives",
                     ItemQty = 0.5m,
                     ItemUnit = "6oz can",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "chopped green pepper",
                     ItemQty = 0.5m,
                     ItemUnit = "",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "chopped red pepper",
                     ItemQty = 0.5m,
                     ItemUnit = "",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "large tomatoe",
                     ItemQty = 1,
                     ItemUnit = "",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "sliced cucumber",
                     ItemQty = 0.5m,
                     ItemUnit = "",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "crumbled feta cheese",
                     ItemQty = 0.5m,
                     ItemUnit = "cup",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "olive oil",
                     ItemQty = 3,
                     ItemUnit = "Tbsp",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "dried oregano",
                     ItemQty = 0.5m,
                     ItemUnit = "tsp",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                {
                     ItemName = "lemon, juiced",
                     ItemQty = 0.5m,
                     ItemUnit = "",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "olive oil",
                     ItemQty = 2m,
                     ItemUnit = "tsp",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
                new Item
                 {
                     ItemName = "diced green pepper",
                     ItemQty = 0.5m,
                     ItemUnit = "cup",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
                new Item
                 {
                     ItemName = "diced chicken breast",
                     ItemQty = 1,
                     ItemUnit = "cup",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
                new Item
                 {
                     ItemName = "large eggs",
                     ItemQty = 4,
                     ItemUnit = "",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
                new Item
                 {
                     ItemName = "cayenne pepper",
                     ItemQty = 0.25m,
                     ItemUnit = "tsp",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
                new Item
                 {
                     ItemName = "chopped chives",
                     ItemQty = 2,
                     ItemUnit = "tsp",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
                new Item
                 {
                     ItemName = "salt",
                     ItemQty = 0.25m,
                     ItemUnit = "tsp",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
                new Item
                 {
                     ItemName = "ground black pepper",
                     ItemQty = 0.25m,
                     ItemUnit = "tsp",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
                new Item
                 {
                     ItemName = "shredded cheese",
                     ItemQty = 0.66m,
                     ItemUnit = "cup",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
                new Item
                 {
                     ItemName = "avocado, diced",
                     ItemQty = 1m,
                     ItemUnit = "",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
                new Item
                 {
                     ItemName = "chipotle pepper sauce",
                     ItemQty = 2m,
                     ItemUnit = "Tbsp",
-                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast")
+                    ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
+                    ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 }
             };
             foreach (Item i in items)
@@ -692,11 +745,13 @@ namespace CuisAriaBE.Models
                 {
                     MenuName = "Dinner",
                     User = users.Single(u => u.UserName == "Picabo Street"),
+                    UserId = users.Single(u => u.UserName == "Picabo Street").Id
                 },
                 new Menu
                 {
                     MenuName = "Breakfast",
                     User = users.Single(u => u.UserName == "Lindsey Vonn"),
+                    UserId = users.Single(u => u.UserName == "Lindsey Vonn").Id
                 }
             };
             foreach (Menu m in menus)

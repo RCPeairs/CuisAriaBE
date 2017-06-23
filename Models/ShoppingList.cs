@@ -13,6 +13,7 @@ namespace CuisAriaBE.Models
         }
 
         public int Id { get; set; }
+        public int UserId { get; set; }
         public string ListName { get; set; }  //ListName included for future use in case we want to supprt multiple shopping lists per user in the future.
 
         public ICollection<Item> Items { get; set; }

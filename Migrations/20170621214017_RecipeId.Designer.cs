@@ -8,9 +8,10 @@ using CuisAriaBE.Models;
 namespace CuisAriaBE.Migrations
 {
     [DbContext(typeof(CuisAriaBEContext))]
-    partial class CuisAriaBEContextModelSnapshot : ModelSnapshot
+    [Migration("20170621214017_RecipeId")]
+    partial class RecipeId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -39,11 +40,11 @@ namespace CuisAriaBE.Migrations
 
                     b.Property<string>("ItemUnit");
 
-                    b.Property<int>("ShoppingListId");
+                    b.Property<int?>("ShoppingListsId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ShoppingListId");
+                    b.HasIndex("ShoppingListsId");
 
                     b.ToTable("Items");
                 });
@@ -67,7 +68,7 @@ namespace CuisAriaBE.Migrations
 
                     b.Property<string>("MenuName");
 
-                    b.Property<int>("UserId");
+                    b.Property<int?>("UserId");
 
                     b.HasKey("Id");
 
@@ -147,7 +148,7 @@ namespace CuisAriaBE.Migrations
 
                     b.Property<string>("ListName");
 
-                    b.Property<int>("UserId");
+                    b.Property<int?>("UserId");
 
                     b.HasKey("Id");
 
@@ -180,7 +181,7 @@ namespace CuisAriaBE.Migrations
 
                     b.Property<int>("IngredientId");
 
-                    b.Property<decimal?>("IngredQty");
+                    b.Property<decimal>("IngredQty");
 
                     b.Property<string>("IngredUnit");
 
@@ -228,7 +229,7 @@ namespace CuisAriaBE.Migrations
                 {
                     b.HasOne("CuisAriaBE.Models.ShoppingList", "ShoppingLists")
                         .WithMany("Items")
-                        .HasForeignKey("ShoppingListId");
+                        .HasForeignKey("ShoppingListsId");
                 });
 
             modelBuilder.Entity("CuisAriaBE.Models.Menu", b =>

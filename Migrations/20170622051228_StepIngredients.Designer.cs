@@ -8,9 +8,10 @@ using CuisAriaBE.Models;
 namespace CuisAriaBE.Migrations
 {
     [DbContext(typeof(CuisAriaBEContext))]
-    partial class CuisAriaBEContextModelSnapshot : ModelSnapshot
+    [Migration("20170622051228_StepIngredients")]
+    partial class StepIngredients
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -180,7 +181,7 @@ namespace CuisAriaBE.Migrations
 
                     b.Property<int>("IngredientId");
 
-                    b.Property<decimal?>("IngredQty");
+                    b.Property<decimal>("IngredQty");
 
                     b.Property<string>("IngredUnit");
 
