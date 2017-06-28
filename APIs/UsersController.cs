@@ -55,46 +55,32 @@ namespace CuisAriaBE.Controllers
         }
 
 
-      
-
-
-        // GET: api/Users
-        //[HttpGet]
-        //public IEnumerable<User> GetAllUsers()
+        // DELETE DeleteUser/[UserId]
+        //[HttpDelete, Route("DeleteUser/{userId}")]
+        //public IActionResult Delete(int userId)
         //{
-        //    return _context.Users.ToList();
-        //}
-
-        //// GET api/Users/5
-        //[HttpGet("{id}", Name = "GetUser")]
-        //public IActionResult GetById(int id)
-        //{
-        //    var user = _context.Users.FirstOrDefault(u => u.Id == id);
-        //    if (user == null)
+        //    var delUser = _context.Users.First(u => u.Id == userId);
+        //    if (delUser == null)
         //    {
         //        return NotFound();
         //    }
 
-        //    return new ObjectResult(user);
+        //    // Delete user entries from UserRecipeFavorites
+        //    // Delete MenuRecipe entries
+        //    // Delete user menus
+        //    // Delete ShoppingList items for user shopping list
+        //    // Delete user ShoppingList
+        //    // Delete StepIngredient entries for use owned recipes
+        //    // Delete RecipeKeyword entries
+        //    // Delete Steps for user owned recipes
+        //    // Delete user owned Recipes
+        //    // Delete User
+
+
+
+        //    _context.Users.Remove(delUser);
+        //    _context.SaveChanges();
+        //    return new NoContentResult();
         //}
-
-
-
-
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            var delUser = _context.Users.First(u => u.Id == id);
-            if (delUser == null)
-            {
-                return NotFound();
-            }
-
-            _context.Users.Remove(delUser);
-            _context.SaveChanges();
-            return new NoContentResult();
-        }
     }
 }

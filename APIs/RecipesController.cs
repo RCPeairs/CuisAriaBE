@@ -18,15 +18,31 @@ namespace CuisAriaBE.Controllers
             _context = context;
         }
 
-        // GET /GetSharedRecipes
-        [HttpGet, Route("GetSharedRecipes/{userId}")]
-        public IActionResult GetSharedRecipes(int userId)
+        // GET /GetSharedRecipes/[UserId]/[optional search string]
+        [HttpGet, Route("GetSharedRecipes/{searchStr?}/{userId}")]
+        public IActionResult GetSharedRecipes(int userId, string searchStr=" ")
+        //[HttpGet, Route("GetSharedRecipes/{userId}")]
+        //public IActionResult GetSharedRecipes(int userId)
         {
-            var tmpSharedRecipes = from recipe in _context.Recipes
+            //var userId = 240;
+            List<Recipe> tempSharedList = new List<Recipe>();
+            if (searchStr != null)
+            {
+                var tmpSharedRecipes = from recipe in _context.Recipes
+                                       where (recipe.Description.Contains('%' + searchStr + '%'))
+                                       select recipe;
+                tempSharedList = tmpSharedRecipes.ToList();
+
+            }
+            else
+            {
+                var tmpSharedRecipes = from recipe in _context.Recipes
                                 where recipe.Shared == true
                                 select recipe;
+                tempSharedList = tmpSharedRecipes.ToList();
+                //var tempSharedList = tmpSharedRecipes.ToList();
 
-            var tempSharedList = tmpSharedRecipes.ToList();
+            }
 
             List<UserRecipeVM> sharedRecipes = new List<UserRecipeVM>();
             foreach (Recipe recipePtr in tempSharedList)
@@ -67,7 +83,7 @@ namespace CuisAriaBE.Controllers
             return new ObjectResult(sharedRecipes);
         }
 
-        // GET /GetMyRecipes/Id
+        // GET /GetMyRecipes/[UserId]
         [HttpGet, Route("GetMyRecipes/{id}")]
         public IActionResult GetMyRecipes(int id)
         {
@@ -111,7 +127,7 @@ namespace CuisAriaBE.Controllers
             return new ObjectResult(myRecipes);
         }
 
-        // GET /GetFavRecipes/Id
+        // GET /GetFavRecipes/[UserId]
         [HttpGet, Route("GetFavRecipes/{id}")]
         public IActionResult GetFavRecipes(int id)
         {
@@ -156,7 +172,7 @@ namespace CuisAriaBE.Controllers
             return new ObjectResult(myRecipes);
         }
 
-        // GET /GetRecipe/Id
+        // GET /GetRecipe/[RecipeId]
         [HttpGet, Route("GetRecipe/{id}")]
         public IActionResult GetRecipe(int id)
         {
@@ -168,6 +184,14 @@ namespace CuisAriaBE.Controllers
 
             return new ObjectResult(recipe);
         }
+
+
+
+
+
+
+
+
 
         // POST AddEditRecipes
         [HttpPost, Route("AddEditRecipe")]
@@ -187,6 +211,7 @@ namespace CuisAriaBE.Controllers
 
                 var editRecipe = false;
                 List<MenuRecipe> menuRecipeEdits = new List<MenuRecipe>();
+                List<UserRecipeFavorite> userRecipeFavEdits = new List<UserRecipeFavorite>();
                 if (recipeInput.recipe.RecipeId != 0)
                 {
                     editRecipe = true;
@@ -215,6 +240,22 @@ namespace CuisAriaBE.Controllers
                     // Delete RecipeKeyword entries
                     _context.RecipeKeyword.RemoveRange(_context.RecipeKeyword.Where(r => r.RecipeId == recipeInput.recipe.RecipeId));
                     _context.SaveChanges();
+
+                    // Save list of UserRecipeFavorite entries if recipe is shared
+                    var curRecipe = new Recipe();
+                    curRecipe = _context.Recipes.FirstOrDefault(r => r.Id == recipeInput.recipe.RecipeId);
+                    var curRecipeShared = false;
+                    if (curRecipe != null)
+                    {
+                    curRecipeShared = curRecipe.Shared;
+                    }
+                    if (recipeInput.recipe.Shared == true && curRecipeShared == true)
+                    {
+                        var tempUserRecFav = from userRecipePtr in _context.UserRecipeFavorite
+                                              where userRecipePtr.RecipeId == recipeInput.recipe.RecipeId && userRecipePtr.UserId != recipeInput.recipe.OwnerId
+                                             select userRecipePtr;
+                        userRecipeFavEdits = tempUserRecFav.ToList();
+                    }
 
                     // Delete UserRecipeFavorite entries
                     _context.UserRecipeFavorite.RemoveRange(_context.UserRecipeFavorite.Where(u => u.RecipeId == recipeInput.recipe.RecipeId));
@@ -346,6 +387,17 @@ namespace CuisAriaBE.Controllers
                         tempMenuRecipe.RecipeId = tempRecipe.Id;
                         tempMenuRecipe.MenuServings = recipePtr.MenuServings;
                         _context.MenuRecipe.Add(tempMenuRecipe);
+                    }
+                    _context.SaveChanges();
+
+                    // Re-enter UserRecipeFavorites entries with new RecipeId for shared recipes
+                    foreach (UserRecipeFavorite userRecipePtr in userRecipeFavEdits)
+                    {
+                        var tempUserRecipe = new UserRecipeFavorite();
+                        tempUserRecipe.UserId = userRecipePtr.UserId;
+                        tempUserRecipe.RecipeId = tempRecipe.Id;
+                        tempUserRecipe.Favorite = userRecipePtr.Favorite;
+                        _context.UserRecipeFavorite.Add(tempUserRecipe);
                     }
                     _context.SaveChanges();
                 }
