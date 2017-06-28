@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CuisAriaBE.Models;
+using CuisAriaBE.ViewModels;
 
 namespace CuisAriaBE.Controllers
 {
-    [Route("api/[controller]")]
     public class MenusController : Controller
     {
         private readonly CuisAriaBEContext _context;
@@ -17,61 +17,172 @@ namespace CuisAriaBE.Controllers
             _context = context;
         }
 
-        // GET: api/Menus
-        [HttpGet]
-        public IEnumerable<Menu> GetAllMenus()
+        // GET GetSavedMenus/[UserId]
+        [HttpGet, Route("GetSavedMenus/{userId}")]
+        public IActionResult GetSavedMenus(int userId)
         {
-            return _context.Menus.ToList();
+            var tmpSavedMenus = from menu in _context.Menus
+                                where menu.UserId == userId
+                                select menu;
+
+            var tempSavedMenus = tmpSavedMenus.ToList();
+            return new ObjectResult(tempSavedMenus);
         }
 
-        // GET api/Menus/5
-        [HttpGet("{id}", Name = "GetMenu")]
-        public IActionResult GetById(int id)
+        // GET GetMenu/[MenuId]
+        [HttpGet, Route("GetMenu/{menuId}")]
+        public IActionResult GetMenu(int menuId)
         {
-            var menu = _context.Menus.FirstOrDefault(m => m.Id == id);
-            if (menu == null)
+            var tmpRecipes = from tempMenuRecipes in _context.MenuRecipe
+                             where tempMenuRecipes.MenuId == menuId
+                             select tempMenuRecipes;
+            var tempRecipes = tmpRecipes.ToList();
+
+            List<MenuRecipeVM> menuRecipes = new List<MenuRecipeVM>();
+            foreach (MenuRecipe recipePtr in tempRecipes)
+            {
+                var recipe = new MenuRecipeVM();
+                var recipeObj = new Recipe();
+                var menuObj = new Menu();
+                recipeObj = _context.Recipes.FirstOrDefault(r => r.Id == recipePtr.RecipeId);
+                menuObj = _context.Menus.FirstOrDefault(m => m.Id == recipePtr.MenuId);
+
+                recipe.MenuId = recipePtr.MenuId;
+                recipe.MenuName = menuObj.MenuName;
+                recipe.RecipeId = recipeObj.Id;
+                recipe.RecipeName = recipeObj.RecipeName;
+                recipe.Description = recipeObj.Description;
+                recipe.OwnerId = recipeObj.OwnerId;
+                recipe.Shared = recipeObj.Shared;
+                recipe.Notes = recipeObj.Notes;
+                recipe.MyRating = recipeObj.MyRating;
+                recipe.ShareRating = recipeObj.ShareRating;
+                recipe.NumShareRatings = recipeObj.NumShareRatings;
+                recipe.RecipePic = recipeObj.RecipePic;
+                recipe.PrepTime = recipeObj.PrepTime;
+                recipe.CookTime = recipeObj.CookTime;
+                recipe.RecipeServings = recipeObj.RecipeServings;
+                recipe.ServingSize = recipeObj.ServingSize;
+                recipe.MenuServings = recipePtr.MenuServings;
+
+                menuRecipes.Add(recipe);
+            }
+
+            if (menuRecipes.Count() == 0)
             {
                 return NotFound();
             }
-
-            return new ObjectResult(menu);
+            return new ObjectResult(menuRecipes);
         }
 
-        // POST api/Menus
-        [HttpPost]
-        public IActionResult Create([FromBody] Menu menu)
+        // POST AddEditMenu
+        [HttpPost, Route("AddEditMenu")]
+        public IActionResult Create([FromBody] AddEditMenuVM menuInput)
         {
             if (ModelState.IsValid)
             {
-                if (menu.Id == 0)
+                var editMenu = false;
+                if (menuInput.MenuId != 0)
                 {
-                    _context.Menus.Add(menu);
-                    _context.SaveChanges();
-                    return CreatedAtRoute("GetMenu", new { id = menu.Id }, menu);
+                    editMenu = true;
+                }
+                List<MenuRecipe> tempRecipeList = new List<MenuRecipe>();
+
+                // Validate data here before writing to database
+                if (_context.Users.FirstOrDefault(m => m.Id == menuInput.UserId) == null)
+                {
+                    return BadRequest();
                 }
                 else
                 {
-                    _context.Menus.Update(menu);
+                    tempRecipeList = menuInput.menuRecipes;
+                    foreach (MenuRecipe tempRecipeId in tempRecipeList)
+                    {
+                        if(_context.Recipes.FirstOrDefault(r => r.Id == tempRecipeId.RecipeId) == null)
+                        {
+                            return BadRequest();
+                        }
+                    }
+                }  // end check for valid UserId and RecipeIds
+
+                var tempMenu = new Menu();
+                if (editMenu)
+                {
+                    // Edit existing menu
+                    tempMenu = _context.Menus.FirstOrDefault(m => m.Id == menuInput.MenuId);
+                    tempMenu.MenuName = menuInput.MenuName;
+                    _context.Menus.Update(tempMenu);
+
+                    var delExistingRecipes = from recipePtr in _context.MenuRecipe
+                                          where recipePtr.MenuId == menuInput.MenuId
+                                          select recipePtr;
+                    var delRecipeList = delExistingRecipes.ToList();
+                    foreach (MenuRecipe delRecipe in delRecipeList)
+                    {
+                        _context.MenuRecipe.Remove(delRecipe);
+                    }
                     _context.SaveChanges();
-                    return new NoContentResult();
+
+                    foreach (MenuRecipe addRecipe in tempRecipeList)
+                    {
+                        var tempAddRecipe = new MenuRecipe();
+                        tempAddRecipe.MenuId = menuInput.MenuId;
+                        tempAddRecipe.RecipeId = addRecipe.RecipeId;
+                        tempAddRecipe.MenuServings = addRecipe.MenuServings;
+
+                        _context.MenuRecipe.Add(tempAddRecipe);
+                        _context.SaveChanges();
+                    }
+
+                } else
+                {
+                    // Add new menu
+                    tempMenu.UserId = menuInput.UserId;
+                    tempMenu.MenuName = menuInput.MenuName;
+                    _context.Menus.Add(tempMenu);
+                    _context.SaveChanges();
+
+                    foreach (MenuRecipe addRecipe in tempRecipeList)
+                    {
+                        var tempAddRecipe = new MenuRecipe();
+                        tempAddRecipe.MenuId = tempMenu.Id;
+                        tempAddRecipe.RecipeId = addRecipe.RecipeId;
+                        tempAddRecipe.MenuServings = addRecipe.MenuServings;
+                        _context.MenuRecipe.Add(tempAddRecipe);
+                    }
                 }
+                _context.SaveChanges();
+                return CreatedAtRoute("", new { id = tempMenu.Id }, menuInput);
+            } else
+            {
+                return BadRequest();
             }
-            return BadRequest();
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        // POST DeleteMenu/[MenuId]
+        [HttpPost, Route("DeleteMenu/{menuId}")]
+        public IActionResult DeleteMenu(int menuId)
         {
-            var delMenu = _context.Menus.First(m => m.Id == id);
-            if (delMenu == null)
+            // Validate menuId here before attempting to delete
+            if (_context.Menus.FirstOrDefault(m => m.Id == menuId) == null)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            _context.Menus.Remove(delMenu);
+            var delRecipes = from recipePtr in _context.MenuRecipe
+                             where recipePtr.MenuId == menuId
+                             select recipePtr;
+            var delRecipeList = delRecipes.ToList();
+            foreach (MenuRecipe delRecipe in delRecipeList)
+            {
+                _context.MenuRecipe.Remove(delRecipe);
+            }
             _context.SaveChanges();
-            return new NoContentResult();
+            var tempMenu = new Menu();
+            tempMenu = _context.Menus.FirstOrDefault(m => m.Id == menuId);
+            _context.Menus.Remove(tempMenu);
+            _context.SaveChanges();
+            return NoContent();
         }
     }
 }

@@ -22,6 +22,9 @@ namespace CuisAriaBE.ViewModels
         public string RecipePic { get; set; }
         public int PrepTime { get; set; }
         public int CookTime { get; set; }
-        public int Servings { get; set; }
+        public int RecipeServings { get; set; }
+        public string ServingSize { get; set; }
+        public int MenuServings { get; set; }
+
     }
 }
