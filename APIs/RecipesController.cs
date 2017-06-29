@@ -19,30 +19,30 @@ namespace CuisAriaBE.Controllers
         }
 
         // GET /GetSharedRecipes/[UserId]/[optional search string]
-        [HttpGet, Route("GetSharedRecipes/{searchStr?}/{userId}")]
-        public IActionResult GetSharedRecipes(int userId, string searchStr=" ")
-        //[HttpGet, Route("GetSharedRecipes/{userId}")]
-        //public IActionResult GetSharedRecipes(int userId)
+        //[HttpGet, Route("GetSharedRecipes/{searchStr?}/{userId}")]
+        //public IActionResult GetSharedRecipes(int userId, string searchStr=" ")
+        [HttpGet, Route("GetSharedRecipes/{userId}")]
+        public IActionResult GetSharedRecipes(int userId)
         {
             //var userId = 240;
             List<Recipe> tempSharedList = new List<Recipe>();
-            if (searchStr != null)
-            {
-                var tmpSharedRecipes = from recipe in _context.Recipes
-                                       where (recipe.Description.Contains('%' + searchStr + '%'))
-                                       select recipe;
-                tempSharedList = tmpSharedRecipes.ToList();
+            //if (searchStr != null)
+            //{
+            //    var tmpSharedRecipes = from recipe in _context.Recipes
+            //                           where (recipe.Description.Contains('%' + searchStr + '%'))
+            //                           select recipe;
+            //    tempSharedList = tmpSharedRecipes.ToList();
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 var tmpSharedRecipes = from recipe in _context.Recipes
                                 where recipe.Shared == true
                                 select recipe;
                 tempSharedList = tmpSharedRecipes.ToList();
                 //var tempSharedList = tmpSharedRecipes.ToList();
 
-            }
+            //}
 
             List<UserRecipeVM> sharedRecipes = new List<UserRecipeVM>();
             foreach (Recipe recipePtr in tempSharedList)

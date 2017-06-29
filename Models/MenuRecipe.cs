@@ -9,7 +9,7 @@ namespace CuisAriaBE.Models
     {
         public int MenuId { get; set; }
         public int RecipeId { get; set; }
-        public int MenuServings { get; set; }
+        public decimal MenuServings { get; set; }
 
         public Menu Menu { get; set; }
         public Recipe Recipe { get; set; }

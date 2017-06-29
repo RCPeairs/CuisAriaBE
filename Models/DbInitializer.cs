@@ -47,7 +47,7 @@ namespace CuisAriaBE.Models
                     CookTime = 30,
                     PrepTime = 20,
                     Notes = "Use REAL butter! Do not substitute margarine.",
-                    RecipePic = "cookie pic"
+                    RecipePic = "http://i.imgur.com/zadZ98k.jpg"
                 },
                 new Recipe
                 {
@@ -63,7 +63,7 @@ namespace CuisAriaBE.Models
                     CookTime = 15,
                     PrepTime = 20,
                     Notes = "",
-                    RecipePic = "scrambled eggs pic"
+                    RecipePic = "http://i.imgur.com/zadZ98k.jpg"
                 },
                 new Recipe
                 {
@@ -79,7 +79,7 @@ namespace CuisAriaBE.Models
                     CookTime = 25,
                     PrepTime = 15,
                     Notes = "Use 8x8 pan for chewier brownies",
-                    RecipePic = "brownies pic"
+                    RecipePic = "http://i.imgur.com/zadZ98k.jpg"
                 },
                 new Recipe
                 {
@@ -95,7 +95,7 @@ namespace CuisAriaBE.Models
                     CookTime = 30,
                     PrepTime = 25,
                     Notes = "",
-                    RecipePic = "fried chicken pic"
+                    RecipePic = "http://i.imgur.com/zadZ98k.jpg"
                 },
                 new Recipe
                 {
@@ -111,7 +111,7 @@ namespace CuisAriaBE.Models
                     CookTime = 0,
                     PrepTime = 30,
                     Notes = "",
-                    RecipePic = "greek salad pic"
+                    RecipePic = "http://i.imgur.com/zadZ98k.jpg"
                 }
             };
             foreach (Recipe r in recipes)
@@ -441,7 +441,7 @@ namespace CuisAriaBE.Models
                 new Ingredient {IngredName = "pitted black olives"},
                 new Ingredient {IngredName = "chopped red bell pepper"},
                 new Ingredient {IngredName = "chopped green bell pepper"},
-                new Ingredient {IngredName = "chopped tomatoes"},
+                new Ingredient {IngredName = "chopped large tomatoe"},
                 new Ingredient {IngredName = "sliced cucumber"},
                 new Ingredient {IngredName = "crumbled feta cheese"},
                 new Ingredient {IngredName = "dried oregano"},
@@ -479,8 +479,8 @@ namespace CuisAriaBE.Models
                 new Item
                 {
                     ItemName = "chicken pieces",
-                    ItemQty = 8,
-                    ItemUnit = "",
+                    ItemQty = 8m,
+                    ItemUnit = "each",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -496,7 +496,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "salt",
                     ItemQty = 0.25m,
-                    ItemUnit = "tsp",
+                    ItemUnit = "teaspoon",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -504,14 +504,14 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "ground black pepper",
                     ItemQty = 0.25m,
-                    ItemUnit = "tsp",
+                    ItemUnit = "teaspoon",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "cornflakes",
-                    ItemQty = 4,
+                    ItemQty = 4m,
                     ItemUnit = "cups",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
@@ -527,8 +527,8 @@ namespace CuisAriaBE.Models
                new Item
                 {
                     ItemName = "mustard",
-                    ItemQty = 2,
-                    ItemUnit = "Tbsp",
+                    ItemQty = 2m,
+                    ItemUnit = "tablespoon",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -536,7 +536,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "cayenne pepper",
                     ItemQty = 0.25m,
-                    ItemUnit = "tsp",
+                    ItemUnit = "teaspoon",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -544,7 +544,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "paprika",
                     ItemQty = 1.5m,
-                    ItemUnit = "tsp",
+                    ItemUnit = "teaspoon",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -552,7 +552,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "ground sage",
                     ItemQty = 0.75m,
-                    ItemUnit = "tsp",
+                    ItemUnit = "teaspoon",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -560,7 +560,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "romaine lettuce",
                     ItemQty = 0.5m,
-                    ItemUnit = "head",
+                    ItemUnit = "each",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -568,15 +568,15 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "red onion thinly sliced",
                     ItemQty = 0.5m,
-                    ItemUnit = "",
+                    ItemUnit = "each",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "pitted black olives",
-                    ItemQty = 0.5m,
-                    ItemUnit = "6oz can",
+                    ItemQty = 6m,
+                    ItemUnit = "ounce",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -584,7 +584,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "chopped green pepper",
                     ItemQty = 0.5m,
-                    ItemUnit = "",
+                    ItemUnit = "each",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -592,15 +592,15 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "chopped red pepper",
                     ItemQty = 0.5m,
-                    ItemUnit = "",
+                    ItemUnit = "each",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
                new Item
                 {
                     ItemName = "large tomatoe",
-                    ItemQty = 1,
-                    ItemUnit = "",
+                    ItemQty = 1m,
+                    ItemUnit = "each",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -608,7 +608,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "sliced cucumber",
                     ItemQty = 0.5m,
-                    ItemUnit = "",
+                    ItemUnit = "each",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -623,8 +623,8 @@ namespace CuisAriaBE.Models
                new Item
                 {
                     ItemName = "olive oil",
-                    ItemQty = 3,
-                    ItemUnit = "Tbsp",
+                    ItemQty = 3m,
+                    ItemUnit = "tablespoon",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -632,7 +632,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "dried oregano",
                     ItemQty = 0.5m,
-                    ItemUnit = "tsp",
+                    ItemUnit = "teaspoon",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -640,7 +640,7 @@ namespace CuisAriaBE.Models
                {
                     ItemName = "lemon, juiced",
                     ItemQty = 0.5m,
-                    ItemUnit = "",
+                    ItemUnit = "each",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -648,7 +648,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "olive oil",
                     ItemQty = 2m,
-                    ItemUnit = "tsp",
+                    ItemUnit = "teaspoon",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
@@ -663,7 +663,7 @@ namespace CuisAriaBE.Models
                new Item
                 {
                     ItemName = "diced chicken breast",
-                    ItemQty = 1,
+                    ItemQty = 1m,
                     ItemUnit = "cup",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
@@ -671,8 +671,8 @@ namespace CuisAriaBE.Models
                new Item
                 {
                     ItemName = "large eggs",
-                    ItemQty = 4,
-                    ItemUnit = "",
+                    ItemQty = 4m,
+                    ItemUnit = "each",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
@@ -680,15 +680,15 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "cayenne pepper",
                     ItemQty = 0.25m,
-                    ItemUnit = "tsp",
+                    ItemUnit = "teaspoon",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
                new Item
                 {
                     ItemName = "chopped chives",
-                    ItemQty = 2,
-                    ItemUnit = "tsp",
+                    ItemQty = 2m,
+                    ItemUnit = "teaspoon",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
@@ -696,7 +696,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "salt",
                     ItemQty = 0.25m,
-                    ItemUnit = "tsp",
+                    ItemUnit = "teaspoon",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
@@ -704,7 +704,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "ground black pepper",
                     ItemQty = 0.25m,
-                    ItemUnit = "tsp",
+                    ItemUnit = "teaspoon",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
@@ -720,7 +720,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "avocado, diced",
                     ItemQty = 1m,
-                    ItemUnit = "",
+                    ItemUnit = "each",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
@@ -728,7 +728,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "chipotle pepper sauce",
                     ItemQty = 2m,
-                    ItemUnit = "Tbsp",
+                    ItemUnit = "tablespoon",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 }
@@ -801,21 +801,21 @@ namespace CuisAriaBE.Models
                     StepId = steps.Single(s => s.StepNumber == 3 && s.Instruction.StartsWith("While butter is cooling, whisk") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "large egg").Id,
                     IngredQty = 1m,
-                    IngredUnit = ""
+                    IngredUnit = "each"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 3 && s.Instruction.StartsWith("While butter is cooling, whisk") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "vanilla extract").Id,
                     IngredQty = 1m,
-                    IngredUnit = "tsp"
+                    IngredUnit = "teaspoon"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 3 && s.Instruction.StartsWith("While butter is cooling, whisk") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "brown sugar").Id,
                     IngredQty = 2m,
-                    IngredUnit = "Tbsp"
+                    IngredUnit = "tablespoon"
                 },
                 new StepIngredient
                 {
@@ -829,14 +829,14 @@ namespace CuisAriaBE.Models
                     StepId = steps.Single(s => s.StepNumber == 4 && s.Instruction.StartsWith("Sift in the almond flour. Add t") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "almond flour").Id,
                     IngredQty = 2m,
-                    IngredUnit = "cups"
+                    IngredUnit = "cup"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 4 && s.Instruction.StartsWith("Sift in the almond flour. Add t") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "salt").Id,
                     IngredQty = 0.5m,
-                    IngredUnit = "tsp"
+                    IngredUnit = "teaspoon"
                 },
                 new StepIngredient
                 {
@@ -850,7 +850,7 @@ namespace CuisAriaBE.Models
                     StepId = steps.Single(s => s.StepNumber == 1 && s.Instruction.StartsWith("Add oil to frying pan and saute pepper") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "olive oil").Id,
                     IngredQty = 1m,
-                    IngredUnit = "tsp"
+                    IngredUnit = "teaspoon"
                 },
                 new StepIngredient
                 {
@@ -871,35 +871,35 @@ namespace CuisAriaBE.Models
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Whisk eggs with cayenne pepper, chives") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "large eggs").Id,
                     IngredQty = 2m,
-                    IngredUnit = ""
+                    IngredUnit = "each"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Whisk eggs with cayenne pepper, chives") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "cayenne pepper").Id,
-                    IngredQty = 0.125m,
-                    IngredUnit = "tsp"
+                    IngredQty = 1m,
+                    IngredUnit = "pinch"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Whisk eggs with cayenne pepper, chives") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "chopped chives").Id,
                     IngredQty = 1m,
-                    IngredUnit = "tsp"
+                    IngredUnit = "teaspoon"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Whisk eggs with cayenne pepper, chives") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "salt").Id,
                     IngredQty = 0.125m,
-                    IngredUnit = ""
+                    IngredUnit = "each"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Whisk eggs with cayenne pepper, chives") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "ground black pepper").Id,
                     IngredQty = 0.125m,
-                    IngredUnit = "tsp"
+                    IngredUnit = "teaspoon"
                 },
                 new StepIngredient
                 {
@@ -913,14 +913,14 @@ namespace CuisAriaBE.Models
                     StepId = steps.Single(s => s.StepNumber == 4 && s.Instruction.StartsWith("When eggs are cooked to desired firmness") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "avocado, diced").Id,
                     IngredQty = 0.5m,
-                    IngredUnit = ""
+                    IngredUnit = "each"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 4 && s.Instruction.StartsWith("When eggs are cooked to desired firmness") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "chipotle pepper sauce").Id,
                     IngredQty = 1m,
-                    IngredUnit = "Tbsp"
+                    IngredUnit = "tablespoon"
                 },
                 new StepIngredient
                 {
@@ -941,21 +941,21 @@ namespace CuisAriaBE.Models
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Combine cocoa, melted butter, sugar, eggs") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "granulated sugar").Id,
                     IngredQty = 2m,
-                    IngredUnit = "cups"
+                    IngredUnit = "cup"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Combine cocoa, melted butter, sugar, eggs") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "large eggs").Id,
                     IngredQty = 2m,
-                    IngredUnit = ""
+                    IngredUnit = "each"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Combine cocoa, melted butter, sugar, eggs") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "salt").Id,
                     IngredQty = 0.25m,
-                    IngredUnit = "tsp"
+                    IngredUnit = "teaspoon"
                 },
                 new StepIngredient
                 {
@@ -969,14 +969,14 @@ namespace CuisAriaBE.Models
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Combine cocoa, melted butter, sugar, eggs") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "vanilla extract").Id,
                     IngredQty = 2m,
-                    IngredUnit = "tsp"
+                    IngredUnit = "teaspoon"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Rinse chicken in cold water and pat dry.") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "chicken pieces").Id,
                     IngredQty = 8m,
-                    IngredUnit = ""
+                    IngredUnit = "each"
                 },
                 new StepIngredient
                 {
@@ -990,21 +990,21 @@ namespace CuisAriaBE.Models
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Rinse chicken in cold water and pat dry.") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "salt").Id,
                     IngredQty = 0.25m,
-                    IngredUnit = "tsp"
+                    IngredUnit = "teaspoon"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Rinse chicken in cold water and pat dry.") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "ground black pepper").Id,
                     IngredQty = 0.25m,
-                    IngredUnit = "tsp"
+                    IngredUnit = "teaspoon"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 3 && s.Instruction.StartsWith("Place cornflakes in a plastic bag") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "cornflakes").Id,
                     IngredQty = 4m,
-                    IngredUnit = "cups"
+                    IngredUnit = "cup"
                 },
                 new StepIngredient
                 {
@@ -1018,77 +1018,77 @@ namespace CuisAriaBE.Models
                     StepId = steps.Single(s => s.StepNumber == 4 && s.Instruction.StartsWith("In a bowl big enough to dredge chicken pieces") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "mustard").Id,
                     IngredQty = 2m,
-                    IngredUnit = "Tbsp"
+                    IngredUnit = "tablespoon"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 4 && s.Instruction.StartsWith("In a bowl big enough to dredge chicken pieces") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "cayenne pepper").Id,
                     IngredQty = 0.25m,
-                    IngredUnit = "tsp"
+                    IngredUnit = "teaspoon"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 4 && s.Instruction.StartsWith("In a bowl big enough to dredge chicken pieces") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "paprika").Id,
                     IngredQty = 1.5m,
-                    IngredUnit = "tsp"
+                    IngredUnit = "teaspoon"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 4 && s.Instruction.StartsWith("In a bowl big enough to dredge chicken pieces") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "ground sage").Id,
                     IngredQty = 0.75m,
-                    IngredUnit = "tsp"
+                    IngredUnit = "teaspoon"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 1 && s.Instruction.StartsWith("In a large bowl, combine the Romaine, onion,") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "chopped romaine lettuce").Id,
                     IngredQty = 1m,
-                    IngredUnit = "head"
+                    IngredUnit = "each"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 1 && s.Instruction.StartsWith("In a large bowl, combine the Romaine, onion,") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "red onion thinly sliced").Id,
                     IngredQty = 1m,
-                    IngredUnit = ""
+                    IngredUnit = "each"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 1 && s.Instruction.StartsWith("In a large bowl, combine the Romaine, onion,") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "pitted black olives").Id,
-                    IngredQty = 1m,
-                    IngredUnit = "6oz can"
+                    IngredQty = 6m,
+                    IngredUnit = "ounce"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 1 && s.Instruction.StartsWith("In a large bowl, combine the Romaine, onion,") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "chopped red bell pepper").Id,
                     IngredQty = 1m,
-                    IngredUnit = ""
+                    IngredUnit = "each"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 1 && s.Instruction.StartsWith("In a large bowl, combine the Romaine, onion,") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "chopped green bell pepper").Id,
                     IngredQty = 1m,
-                    IngredUnit = ""
+                    IngredUnit = "each"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 1 && s.Instruction.StartsWith("In a large bowl, combine the Romaine, onion,") == true).Id,
-                    IngredientId = ingredients.Single(i => i.IngredName == "chopped tomatoes").Id,
+                    IngredientId = ingredients.Single(i => i.IngredName == "chopped large tomatoe").Id,
                     IngredQty = 2m,
-                    IngredUnit = "large"
+                    IngredUnit = "each"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 1 && s.Instruction.StartsWith("In a large bowl, combine the Romaine, onion,") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "sliced cucumber").Id,
                     IngredQty = 1m,
-                    IngredUnit = ""
+                    IngredUnit = "each"
                 },
                 new StepIngredient
                 {
@@ -1102,28 +1102,28 @@ namespace CuisAriaBE.Models
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Whisk together the olive oil, oregano, ") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "olive oil").Id,
                     IngredQty = 6m,
-                    IngredUnit = "Tbsp"
+                    IngredUnit = "tablespoon"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Whisk together the olive oil, oregano, ") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "dried oregano").Id,
                     IngredQty = 1m,
-                    IngredUnit = "tsp"
+                    IngredUnit = "teaspoon"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Whisk together the olive oil, oregano, ") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "lemon, juiced").Id,
                     IngredQty = 1m,
-                    IngredUnit = ""
+                    IngredUnit = "each"
                 },
                 new StepIngredient
                 {
                     StepId = steps.Single(s => s.StepNumber == 2 && s.Instruction.StartsWith("Whisk together the olive oil, oregano, ") == true).Id,
                     IngredientId = ingredients.Single(i => i.IngredName == "ground black pepper").Id,
                     IngredQty = 0m,
-                    IngredUnit = "to taste"
+                    IngredUnit = "each"
                 }
             };
             foreach (StepIngredient s in stepIngredients)
