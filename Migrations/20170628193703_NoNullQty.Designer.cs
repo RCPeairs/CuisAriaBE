@@ -8,9 +8,10 @@ using CuisAriaBE.Models;
 namespace CuisAriaBE.Migrations
 {
     [DbContext(typeof(CuisAriaBEContext))]
-    partial class CuisAriaBEContextModelSnapshot : ModelSnapshot
+    [Migration("20170628193703_NoNullQty")]
+    partial class NoNullQty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -82,7 +83,7 @@ namespace CuisAriaBE.Migrations
 
                     b.Property<int>("RecipeId");
 
-                    b.Property<decimal>("MenuServings");
+                    b.Property<int>("MenuServings");
 
                     b.HasKey("MenuId", "RecipeId");
 
@@ -96,7 +97,7 @@ namespace CuisAriaBE.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<decimal>("CookTime");
+                    b.Property<int>("CookTime");
 
                     b.Property<string>("Description");
 
@@ -104,21 +105,21 @@ namespace CuisAriaBE.Migrations
 
                     b.Property<string>("Notes");
 
-                    b.Property<decimal>("NumShareRatings");
+                    b.Property<int>("NumShareRatings");
 
                     b.Property<int>("OwnerId");
 
-                    b.Property<decimal>("PrepTime");
+                    b.Property<int>("PrepTime");
 
                     b.Property<string>("RecipeName");
 
                     b.Property<string>("RecipePic");
 
-                    b.Property<decimal>("RecipeServings");
+                    b.Property<int>("RecipeServings");
 
                     b.Property<string>("ServingSize");
 
-                    b.Property<decimal>("ShareRating");
+                    b.Property<int>("ShareRating");
 
                     b.Property<bool>("Shared");
 

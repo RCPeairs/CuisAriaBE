@@ -24,12 +24,12 @@ namespace CuisAriaBE.ViewModels
         public bool Shared { get; set; }
         public string Notes { get; set; }
         public int MyRating { get; set; }
-        public int ShareRating { get; set; }
-        public int NumShareRatings { get; set; }
+        public decimal ShareRating { get; set; }
+        public decimal NumShareRatings { get; set; }
         public string RecipePic { get; set; }
-        public int PrepTime { get; set; }
-        public int CookTime { get; set; }
-        public int RecipeServings { get; set; }
+        public decimal PrepTime { get; set; }
+        public decimal CookTime { get; set; }
+        public decimal RecipeServings { get; set; }
         public string ServingSize { get; set; }
     }
 }

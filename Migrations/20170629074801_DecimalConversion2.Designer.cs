@@ -8,9 +8,10 @@ using CuisAriaBE.Models;
 namespace CuisAriaBE.Migrations
 {
     [DbContext(typeof(CuisAriaBEContext))]
-    partial class CuisAriaBEContextModelSnapshot : ModelSnapshot
+    [Migration("20170629074801_DecimalConversion2")]
+    partial class DecimalConversion2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
