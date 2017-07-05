@@ -8,9 +8,10 @@ using CuisAriaBE.Models;
 namespace CuisAriaBE.Migrations
 {
     [DbContext(typeof(CuisAriaBEContext))]
-    partial class CuisAriaBEContextModelSnapshot : ModelSnapshot
+    [Migration("20170702140007_AddedCurrentMenu")]
+    partial class AddedCurrentMenu
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -65,8 +66,6 @@ namespace CuisAriaBE.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("CurrentMenu");
-
                     b.Property<string>("MenuName");
 
                     b.Property<int>("UserId");
@@ -83,6 +82,8 @@ namespace CuisAriaBE.Migrations
                     b.Property<int>("MenuId");
 
                     b.Property<int>("RecipeId");
+
+                    b.Property<bool>("CurrentMenu");
 
                     b.Property<decimal>("MenuServings");
 
