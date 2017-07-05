@@ -29,7 +29,7 @@ namespace CuisAriaBE.Controllers
             return new ObjectResult(user);
         }
 
-        // POST AddEditUser/UserId
+        // POST AddEditUser
         [HttpPost, Route("AddEditUser")]
         public IActionResult Create([FromBody] User user)
         {
@@ -51,7 +51,9 @@ namespace CuisAriaBE.Controllers
                     return new NoContentResult();
                 }
             }
-            return BadRequest();
+
+
+            return BadRequest(ModelState);
         }
 
 

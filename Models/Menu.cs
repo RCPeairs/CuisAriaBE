@@ -14,6 +14,7 @@ namespace CuisAriaBE.Models
         public int Id { get; set; }
         public int UserId { get; set; }
         public String MenuName { get; set; }
+        public bool CurrentMenu { get; set; }
 
         public User User { get; set; }
         public ICollection<MenuRecipe> MenuRecipes { get; set; }

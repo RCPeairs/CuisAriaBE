@@ -17,16 +17,16 @@ namespace CuisAriaBE.Controllers
             _context = context;
         }
 
-        // GET GetShoppingList/[ShoppingListId]
-        [HttpGet, Route("GetShoppingList/{shoppingListId}")]
-        public IActionResult GetShoppingList(int shoppingListId)
+        // GET GetShoppingList/[UserId]
+        [HttpGet, Route("GetShoppingList/{userId}")]
+        public IActionResult GetShoppingList(int userId)
         {
-            var tempShopList = _context.ShoppingLists.FirstOrDefault(s => s.Id == shoppingListId);
+            var tempShopList = _context.ShoppingLists.FirstOrDefault(s => s.UserId == userId);
             if (tempShopList == null)
             {
                 return NotFound();
             }
-
+            var shoppingListId = tempShopList.Id;
             var tmpItemList = from itemListPtr in _context.Items
                               where itemListPtr.ShoppingListId == shoppingListId
                               select itemListPtr;
@@ -51,15 +51,49 @@ namespace CuisAriaBE.Controllers
             return new ObjectResult(shoppingList);
         }
 
-        // POST AddEditShoppingList/[MenuId]
-        [HttpPost, Route("AddEditShoppingList/{MenuId}")]
-        public IActionResult Create(int menuId)
+        // POST AddEditShoppingList/[UserId]/[MenuId]
+        [HttpPost, Route("AddEditShoppingList/{userId}/{menuId}")]
+        public IActionResult Create(int userId, int menuId)
         {
+            if (menuId == 0)
+            {
+                var tempMenu = new Menu();
+                tempMenu = _context.Menus.FirstOrDefault(m => m.UserId == userId && m.CurrentMenu == true);
+                if (tempMenu == null)
+                {
+                    return BadRequest();
+                }
+                menuId = tempMenu.Id;
+            } 
             var shoppingListMenu = (_context.Menus.FirstOrDefault(m => m.Id == menuId));
             if (shoppingListMenu == null)
             {
                 return BadRequest();
             }
+
+            // Delete existing shopping lists for user.
+            // Temporarily restricting shopping lists to one per user.
+            var userShoppingLists = from userPtr in _context.ShoppingLists
+                                    where userPtr.UserId == userId
+                                    select userPtr;
+            var tempUserShoppingList = userShoppingLists.ToList();
+            if (tempUserShoppingList != null)
+            {
+                foreach (var sList in tempUserShoppingList)
+                {
+                    var delItems =  from delPtr in _context.Items
+                                   where delPtr.ShoppingListId == sList.Id
+                                   select delPtr;
+                    var delItemList = delItems.ToList();
+                    foreach (var item in delItemList)
+                    {
+                        _context.Items.Remove(item);
+                    }
+                    _context.ShoppingLists.Remove(sList);
+                    _context.SaveChanges();
+                }
+            }
+
 
             // Add shopping list
             var newShoppingList = new ShoppingList();
@@ -239,7 +273,7 @@ namespace CuisAriaBE.Controllers
                         tempEaItem.ShoppingListId = newShoppingList.Id;
                         tempEaItem.ItemName = itemGroup.Key;
                         tempEaItem.ItemQty = itemEaQty;
-                        tempEaItem.ItemUnit = "each";
+                        tempEaItem.ItemUnit = "";
                         _context.Items.Add(tempEaItem);
                     }
                     _context.SaveChanges();
@@ -253,6 +287,8 @@ namespace CuisAriaBE.Controllers
                 }
                 _context.SaveChanges();
             }
+            //return new ObjectResult(newShoppingList);
+
             return Created("", new { id = newShoppingList.Id });
         }
 

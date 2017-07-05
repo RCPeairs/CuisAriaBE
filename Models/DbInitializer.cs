@@ -63,7 +63,7 @@ namespace CuisAriaBE.Models
                     CookTime = 15,
                     PrepTime = 20,
                     Notes = "",
-                    RecipePic = "http://i.imgur.com/zadZ98k.jpg"
+                    RecipePic = "http://i.imgur.com/nA5Ey0a.jpg"
                 },
                 new Recipe
                 {
@@ -79,7 +79,7 @@ namespace CuisAriaBE.Models
                     CookTime = 25,
                     PrepTime = 15,
                     Notes = "Use 8x8 pan for chewier brownies",
-                    RecipePic = "http://i.imgur.com/zadZ98k.jpg"
+                    RecipePic = "http://i.imgur.com/aKmU671.png"
                 },
                 new Recipe
                 {
@@ -95,7 +95,7 @@ namespace CuisAriaBE.Models
                     CookTime = 30,
                     PrepTime = 25,
                     Notes = "",
-                    RecipePic = "http://i.imgur.com/zadZ98k.jpg"
+                    RecipePic = "http://i.imgur.com/YxcYNR5.jpg"
                 },
                 new Recipe
                 {
@@ -111,7 +111,7 @@ namespace CuisAriaBE.Models
                     CookTime = 0,
                     PrepTime = 30,
                     Notes = "",
-                    RecipePic = "http://i.imgur.com/zadZ98k.jpg"
+                    RecipePic = "http://i.imgur.com/69zfHwD.jpg"
                 }
             };
             foreach (Recipe r in recipes)
@@ -480,7 +480,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "chicken pieces",
                     ItemQty = 8m,
-                    ItemUnit = "each",
+                    ItemUnit = "",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -560,7 +560,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "romaine lettuce",
                     ItemQty = 0.5m,
-                    ItemUnit = "each",
+                    ItemUnit = "",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -568,7 +568,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "red onion thinly sliced",
                     ItemQty = 0.5m,
-                    ItemUnit = "each",
+                    ItemUnit = "",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -584,7 +584,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "chopped green pepper",
                     ItemQty = 0.5m,
-                    ItemUnit = "each",
+                    ItemUnit = "",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -592,7 +592,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "chopped red pepper",
                     ItemQty = 0.5m,
-                    ItemUnit = "each",
+                    ItemUnit = "",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -600,7 +600,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "large tomatoe",
                     ItemQty = 1m,
-                    ItemUnit = "each",
+                    ItemUnit = "",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -608,7 +608,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "sliced cucumber",
                     ItemQty = 0.5m,
-                    ItemUnit = "each",
+                    ItemUnit = "",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -640,7 +640,7 @@ namespace CuisAriaBE.Models
                {
                     ItemName = "lemon, juiced",
                     ItemQty = 0.5m,
-                    ItemUnit = "each",
+                    ItemUnit = "",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Dinner"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Dinner").Id
                 },
@@ -672,7 +672,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "large eggs",
                     ItemQty = 4m,
-                    ItemUnit = "each",
+                    ItemUnit = "",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
@@ -720,7 +720,7 @@ namespace CuisAriaBE.Models
                 {
                     ItemName = "avocado, diced",
                     ItemQty = 1m,
-                    ItemUnit = "each",
+                    ItemUnit = "",
                     ShoppingLists = shoppingLists.Single(s => s.ListName == "Breakfast"),
                     ShoppingListId = shoppingLists.Single(s => s.ListName == "Breakfast").Id
                 },
@@ -745,13 +745,15 @@ namespace CuisAriaBE.Models
                 {
                     MenuName = "Dinner",
                     User = users.Single(u => u.UserName == "Picabo Street"),
-                    UserId = users.Single(u => u.UserName == "Picabo Street").Id
+                    UserId = users.Single(u => u.UserName == "Picabo Street").Id,
+                    CurrentMenu = true
                 },
                 new Menu
                 {
                     MenuName = "Breakfast",
                     User = users.Single(u => u.UserName == "Lindsey Vonn"),
-                    UserId = users.Single(u => u.UserName == "Lindsey Vonn").Id
+                    UserId = users.Single(u => u.UserName == "Lindsey Vonn").Id,
+                    CurrentMenu = true
                 }
             };
             foreach (Menu m in menus)
