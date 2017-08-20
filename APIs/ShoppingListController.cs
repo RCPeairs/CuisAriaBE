@@ -154,7 +154,6 @@ namespace CuisAriaBE.Controllers
                         tempItem.ItemQty = Ingred.IngredQty * scaleFactor;
                         tempItem.ItemUnit = Ingred.IngredUnit;
                         tempItemList.Add(tempItem);
-                        //_context.SaveChanges();
                     }  // end process ingredients
                 } // end process steps
             } // end process recipes
@@ -205,11 +204,10 @@ namespace CuisAriaBE.Controllers
                             eachCount++;
                         }
                     }
-                    //var largestUnit = unitList.Substring(unitPosition,11);
 
                     // Convert units to consistent units and add qtys together
                     decimal[,] volConvertArray = new decimal[12, 12]
-                    {{1m, 3.785m, 4m, 8m, 16m, 37.85m, 128m, 256m, 768m, 3785m, 6144m, 12288 },
+                    {{1m, 3.785m, 4m, 8m, 16m, 37.85m, 128m, 256m, 768m, 3785m, 6144m, 12288m },
                      {0.2642m, 1m, 1.057m, 2.113m, 4.227m, 10m, 33.81m, 67.63m, 202.9m, 1000m, 1623.2m, 3246.4m },
                      {0.25m, 0.9464m, 1m, 2m, 4m, 9.464m, 32m, 64m, 192m, 946.4m, 1536m, 3072m },
                      {0.125m, 0.4732m, 0.5m, 1m, 2m, 4.732m, 16m, 32m, 96m, 473.2m, 768m, 1536m },

@@ -29,7 +29,7 @@ namespace CuisAriaBE.Controllers
             return new ObjectResult(tempSavedMenus);
         }
 
-        // GET GetMenu/[MenuId]
+        // GET GetMenu/[UserId]/[MenuId]
         [HttpGet, Route("GetMenu/{userId}/{menuId}")]
         public IActionResult GetMenu(int userId, int menuId)
         {
@@ -43,7 +43,7 @@ namespace CuisAriaBE.Controllers
                     curMenu = _context.Menus.FirstOrDefault(m => m.UserId == userId);
                     if (curMenu == null)
                     {
-                        return BadRequest();
+                        return NotFound();
                     }
                 }
                 menuId = curMenu.Id;
@@ -84,10 +84,6 @@ namespace CuisAriaBE.Controllers
                 menuRecipes.Add(recipe);
             }
 
-            if (menuRecipes.Count() == 0)
-            {
-                return NotFound();
-            }
             return new ObjectResult(menuRecipes);
         }
 
